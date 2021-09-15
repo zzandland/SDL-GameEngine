@@ -1,2 +1,2 @@
-# snakecurse
-A simple snake game implementation using ncurses
+# SnakeSFML
+A simple snake game implementation using SFML
