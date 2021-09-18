@@ -1,9 +1,9 @@
 #pragma once
 
 #include <iostream>
-#include <memory>
 
 #include "SDL.h"
+#include "SDL_image.h"
 
 class Game {
  public:
@@ -20,7 +20,7 @@ class Game {
   bool running() { return isRunning; };
 
  private:
-  bool isRunning;
+  bool isRunning = false;
   SDL_Window *window;
   SDL_Renderer *renderer;
 };
