@@ -3,7 +3,7 @@
 GameObject::GameObject(const char *texturePath, int ypos, int xpos) {
   this->ypos = ypos;
   this->xpos = xpos;
-  this->texture = TextureManager::loadTexture(texturePath);
+  this->texture = TextureManager::load(texturePath);
 }
 
 GameObject::~GameObject() {}
