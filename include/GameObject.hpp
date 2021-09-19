@@ -13,5 +13,5 @@ class GameObject {
  private:
   SDL_Texture *texture;
   int ypos, xpos;
-  SDL_Rect destRect;
+  SDL_Rect srcRect, destRect;
 };
