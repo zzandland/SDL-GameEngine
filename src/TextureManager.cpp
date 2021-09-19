@@ -6,3 +6,8 @@ SDL_Texture *TextureManager::load(const char *fileName) {
   SDL_FreeSurface(tmp);
   return output;
 }
+
+void TextureManager::draw(SDL_Texture *texture, SDL_Rect srcRect,
+                          SDL_Rect destRect) {
+  SDL_RenderCopy(Game::getRenderer(), texture, &srcRect, &destRect);
+}

@@ -13,9 +13,7 @@ GameObject::GameObject(const char *texturePath, int ypos, int xpos) {
 
 GameObject::~GameObject() {}
 
-void GameObject::render() {
-  SDL_RenderCopy(Game::getRenderer(), texture, nullptr, &destRect);
-}
+void GameObject::render() { TextureManager::draw(texture, srcRect, destRect); }
 
 void GameObject::update() {
   ++ypos;
