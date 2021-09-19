@@ -1,7 +1,7 @@
 #include "Game.hpp"
 
 #define FPS 60
-#define FRAME_DELAY FPS / 60
+#define FRAME_DELAY 1000 / FPS
 
 Game *game;
 int main(int argc, const char **argv) {
