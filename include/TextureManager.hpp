@@ -6,5 +6,5 @@ class TextureManager {
  public:
   TextureManager() = delete;
   ~TextureManager() = delete;
-  static SDL_Texture *loadTexture(SDL_Renderer *renderer, const char *fileName);
+  static SDL_Texture *loadTexture(const char *fileName);
 };

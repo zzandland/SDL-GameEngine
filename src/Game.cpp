@@ -3,9 +3,8 @@
 #include "GameObject.hpp"
 #include "TextureManager.hpp"
 
-GameObject *player;
-
-Game::Game() {}
+SDL_Renderer *Game::renderer = nullptr;
+GameObject *player = nullptr;
 
 Game::~Game() {}
 
@@ -23,7 +22,7 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height,
       std::cout << "Window created" << std::endl;
     }
 
-    renderer = SDL_CreateRenderer(window, -1, 0);
+    Game::renderer = SDL_CreateRenderer(window, -1, 0);
     if (renderer) {
       SDL_SetRenderDrawColor(renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
       std::cout << "Renderer created" << std::endl;
@@ -31,8 +30,10 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height,
     isRunning = true;
   }
 
-  player = new GameObject(renderer, "assets/player.png", 0, 0);
+  player = new GameObject("assets/player.png", 0, 0);
 }
+
+SDL_Renderer *Game::getRenderer() { return Game::renderer; }
 
 void Game::handleEvents() {
   SDL_Event event;
