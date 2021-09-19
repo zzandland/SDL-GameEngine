@@ -1,2 +1,2 @@
-# SnakeSFML
-A simple snake game implementation using SFML
+# SDL-GameEngine
+A simple Rogue-like game implemented using SDL2 library.
