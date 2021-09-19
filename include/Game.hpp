@@ -7,11 +7,10 @@
 
 class Game {
  public:
-  Game();
+  Game() = delete;
+  Game(const char *title, int xpos, int ypos, int width, int height,
+       bool fullscreen);
   ~Game();
-
-  void init(const char *title, int xpos, int ypos, int width, int height,
-            bool fullscreen);
   static SDL_Renderer *getRenderer();
   void handleEvents();
   void update();

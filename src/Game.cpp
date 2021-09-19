@@ -6,10 +6,8 @@
 SDL_Renderer *Game::renderer = nullptr;
 GameObject *player = nullptr;
 
-Game::~Game() {}
-
-void Game::init(const char *title, int xpos, int ypos, int width, int height,
-                bool fullscreen) {
+Game::Game(const char *title, int xpos, int ypos, int width, int height,
+           bool fullscreen) {
   int flags = 0;
   if (fullscreen) {
     flags = SDL_WINDOW_FULLSCREEN;
@@ -32,6 +30,8 @@ void Game::init(const char *title, int xpos, int ypos, int width, int height,
 
   player = new GameObject("assets/player.png", 0, 0);
 }
+
+Game::~Game() {}
 
 SDL_Renderer *Game::getRenderer() { return Game::renderer; }
 
