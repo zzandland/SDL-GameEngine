@@ -1,13 +1,9 @@
 #include "Map.hpp"
 
-Map::Map(int w, int h) {
-  this->w = w;
-  this->h = h;
+Map::Map() {
   dirt = TextureManager::load("assets/dirt.png");
   grass = TextureManager::load("assets/grass.png");
   water = TextureManager::load("assets/water.png");
-
-  map.resize(h, std::vector<Tile>(w, Tile::kDirt));
 }
 
 void Map::load(const char *path) {
@@ -17,16 +13,20 @@ void Map::load(const char *path) {
     std::cerr << "Could not open the file - '" << path << "'" << std::endl;
   }
 
+  int h, w;
+  ifs >> h >> w;
+  map.resize(h, std::vector<Tile>(w, Tile::kDirt));
+  std::cout << h << ':' << w << std::endl;
+
   int y, x;
   y = x = 0;
-  while (ifs.get(c)) {
-    if (c == '\n') {
+  while (ifs >> c) {
+    if (x == w) {
       ++y;
       x = 0;
-    } else {
-      Tile t = static_cast<Tile>(c - '0');
-      map[y][x++] = t;
     }
+    Tile t = static_cast<Tile>(c - '0');
+    map[y][x++] = t;
   }
 
   ifs.close();

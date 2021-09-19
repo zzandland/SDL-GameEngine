@@ -11,7 +11,7 @@ enum Tile { kDirt, kGrass, kWater };
 
 class Map {
  public:
-  Map(int w, int h);
+  Map();
   ~Map() = default;
 
   void load(const char *path);

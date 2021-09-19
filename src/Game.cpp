@@ -1,10 +1,12 @@
 #include "Game.hpp"
 
 #include "GameObject.hpp"
+#include "Map.hpp"
 #include "TextureManager.hpp"
 
 SDL_Renderer *Game::renderer = nullptr;
 GameObject *player = nullptr;
+Map *map = nullptr;
 
 Game::Game(const char *title, int xpos, int ypos, int width, int height,
            bool fullscreen) {
@@ -29,6 +31,8 @@ Game::Game(const char *title, int xpos, int ypos, int width, int height,
   }
 
   player = new GameObject("assets/player.png", 0, 0);
+  map = new Map();
+  map->load("assets/level1.txt");
 }
 
 Game::~Game() {}
@@ -55,6 +59,7 @@ void Game::render() {
   SDL_RenderClear(renderer);
 
   player->render();
+  map->draw();
 
   SDL_RenderPresent(renderer);
 }
