@@ -8,7 +8,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 include(CTest)
 enable_testing()
 
-file(GLOB TARGET_SRC "./src/*.cpp" )
+file(GLOB TARGET_SRC "./src/*.cc" )
 add_executable(${PROJECT_NAME} ${TARGET_SRC})
 
 include_directories(include assets)

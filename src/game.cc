@@ -1,8 +1,8 @@
-#include "Game.hpp"
+#include "game.h"
 
-#include "GameObject.hpp"
-#include "Map.hpp"
-#include "TextureManager.hpp"
+#include "game_object.h"
+#include "map.h"
+#include "texture_manager.h"
 
 SDL_Renderer *Game::renderer = nullptr;
 GameObject *player = nullptr;

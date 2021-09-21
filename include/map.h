@@ -5,7 +5,7 @@
 #include <vector>
 
 #include "SDL.h"
-#include "TextureManager.hpp"
+#include "texture_manager.h"
 
 enum Tile { kDirt, kGrass, kWater };
 

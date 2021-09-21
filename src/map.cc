@@ -1,4 +1,4 @@
-#include "Map.hpp"
+#include "map.h"
 
 Map::Map() {
   dirt = TextureManager::load("assets/dirt.png");

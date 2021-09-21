@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Game.hpp"
-#include "TextureManager.hpp"
+#include "game.h"
+#include "texture_manager.h"
 
 class GameObject {
  public:
