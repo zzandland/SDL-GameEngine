@@ -1,26 +1,28 @@
 #include "game_object.h"
 
 GameObject::GameObject(const char *texturePath, int ypos, int xpos) {
-  this->ypos = ypos;
-  this->xpos = xpos;
-  this->texture = TextureManager::load(texturePath);
+  ypos_ = ypos;
+  xpos_ = xpos;
+  texture_ = TextureManager::Load(texturePath);
 
   int w, h;
-  SDL_QueryTexture(texture, nullptr, nullptr, &w, &h);
-  srcRect.w = w;
-  srcRect.h = h;
+  SDL_QueryTexture(texture_, nullptr, nullptr, &w, &h);
+  src_rect_.w = w;
+  src_rect_.h = h;
 }
 
 GameObject::~GameObject() {}
 
-void GameObject::render() { TextureManager::draw(texture, srcRect, destRect); }
+void GameObject::Render() {
+  TextureManager::Draw(texture_, src_rect_, dest_rect_);
+}
 
-void GameObject::update() {
-  ++ypos;
-  ++xpos;
+void GameObject::Update() {
+  ++ypos_;
+  ++xpos_;
 
-  srcRect.x = srcRect.y = 0;
-  destRect.x = xpos;
-  destRect.y = ypos;
-  destRect.w = destRect.h = 100;
+  src_rect_.x = src_rect_.y = 0;
+  dest_rect_.x = xpos_;
+  dest_rect_.y = ypos_;
+  dest_rect_.w = dest_rect_.h = 100;
 }

@@ -13,9 +13,9 @@ int main(int argc, const char **argv) {
   while (game->running()) {
     frameStart = SDL_GetTicks();
 
-    game->handleEvents();
-    game->update();
-    game->render();
+    game->HandleEvents();
+    game->Update();
+    game->Render();
 
     frameTime = SDL_GetTicks() - frameStart;
 
@@ -24,7 +24,7 @@ int main(int argc, const char **argv) {
     }
   }
 
-  game->clean();
+  game->Clean();
 
   return EXIT_SUCCESS;
 }

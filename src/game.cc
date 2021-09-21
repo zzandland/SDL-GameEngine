@@ -4,7 +4,7 @@
 #include "map.h"
 #include "texture_manager.h"
 
-SDL_Renderer *Game::renderer = nullptr;
+SDL_Renderer *Game::renderer_ = nullptr;
 GameObject *player = nullptr;
 Map *map = nullptr;
 
@@ -17,35 +17,35 @@ Game::Game(const char *title, int xpos, int ypos, int width, int height,
   if (SDL_Init(SDL_INIT_EVERYTHING) == 0) {
     std::cout << "Subsystems initialized" << std::endl;
 
-    window = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
-    if (window) {
+    window_ = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
+    if (window_) {
       std::cout << "Window created" << std::endl;
     }
 
-    Game::renderer = SDL_CreateRenderer(window, -1, 0);
-    if (renderer) {
-      SDL_SetRenderDrawColor(renderer, 255, 255, 255, SDL_ALPHA_OPAQUE);
+    Game::renderer_ = SDL_CreateRenderer(window_, -1, 0);
+    if (renderer_) {
+      SDL_SetRenderDrawColor(renderer_, 255, 255, 255, SDL_ALPHA_OPAQUE);
       std::cout << "Renderer created" << std::endl;
     }
-    isRunning = true;
+    running_ = true;
   }
 
   player = new GameObject("assets/player.png", 0, 0);
   map = new Map();
-  map->load("assets/level1.txt");
+  map->Load("assets/level1.txt");
 }
 
 Game::~Game() {}
 
-SDL_Renderer *Game::getRenderer() { return Game::renderer; }
+SDL_Renderer *Game::renderer() { return Game::renderer_; }
 
-void Game::handleEvents() {
+void Game::HandleEvents() {
   SDL_Event event;
   SDL_PollEvent(&event);
 
   switch (event.type) {
     case SDL_QUIT:
-      isRunning = false;
+      running_ = false;
       break;
 
     default:
@@ -53,20 +53,20 @@ void Game::handleEvents() {
   }
 }
 
-void Game::update() { player->update(); }
+void Game::Update() { player->Update(); }
 
-void Game::render() {
-  SDL_RenderClear(renderer);
+void Game::Render() {
+  SDL_RenderClear(renderer_);
 
-  player->render();
-  map->draw();
+  player->Render();
+  map->Draw();
 
-  SDL_RenderPresent(renderer);
+  SDL_RenderPresent(renderer_);
 }
 
-void Game::clean() {
-  SDL_DestroyWindow(window);
-  SDL_DestroyRenderer(renderer);
+void Game::Clean() {
+  SDL_DestroyWindow(window_);
+  SDL_DestroyRenderer(renderer_);
   SDL_Quit();
   std::cout << "Game cleaned" << std::endl;
 }

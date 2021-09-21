@@ -14,12 +14,12 @@ class Map {
   Map();
   ~Map() = default;
 
-  void load(const char *path);
-  void draw();
+  void Load(const char *path);
+  void Draw();
 
  private:
-  int w, h;
-  SDL_Rect srcRect, destRect;
-  SDL_Texture *dirt, *grass, *water;
-  std::vector<std::vector<Tile>> map;
+  int w_, h_;
+  SDL_Rect src_rect_, dest_rect_;
+  SDL_Texture *dirt_, *grass_, *water_;
+  std::vector<std::vector<Tile>> map_;
 };
